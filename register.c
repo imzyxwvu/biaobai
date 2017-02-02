@@ -1,3 +1,7 @@
+/*
+ *  biaobai/register.c
+ *  (c)2017 zyxwvu Shi <syc@0xspot.com>
+ */
 #include <stdio.h>
 #include <gd.h>
 #include <sqlite3.h>
