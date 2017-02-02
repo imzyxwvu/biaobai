@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
+#include <time.h>
 #include <gd.h>
 #include <sqlite3.h>
 
@@ -91,6 +92,7 @@ imagedesc_t *findSimilarImage(rgbcolor_t rgb[])
 			} else {
 				score += 1.0f -
 					fabs(color[i].max - current->parts[i].max);
+				score += ((random() % 100) - 50.0f) / 800.0f;
 			}
 		}
 		if(bestMatch == NULL || score > bestMatchScore) {
@@ -173,6 +175,7 @@ int main(int argc, char *argv[])
 			fputs("error: failed to open database\n", stderr);
 			return 1;
 		}
+		srandom(time(NULL));
 		reference = gdImageCreateFromFile(argv[2]);
 		if(reference) {
 			gdImagePtr output = composeWith(reference);
